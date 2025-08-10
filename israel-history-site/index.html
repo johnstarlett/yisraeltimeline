@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Israel History Timeline</title>
+    <meta name="description" content="A mobile-first timeline of Israel's history, with sources and articles." />
+    <meta name="theme-color" content="#000000" />
+    <meta property="og:title" content="Israel History Timeline" />
+    <meta property="og:description" content="Browse events by year, tags, and sources." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇮🇱</text></svg>">
+    <!-- TailwindCSS via CDN (no build step) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { brand: { 500: "#22d3ee" } }
+          }
+        }
+      }
+    </script>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      .shadow-card { box-shadow: 0 6px 20px rgba(0,0,0,.35); }
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+  <body class="h-full bg-black text-white">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 bg-white text-black px-3 py-2 rounded">Skip to content</a>
+
+    <header class="sticky top-0 z-30 bg-gradient-to-b from-black to-black/80 backdrop-blur">
+      <div class="px-4 pt-3 pb-2 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div id="yearPill" class="flex items-center justify-center h-8 w-14 rounded-full bg-brand-500 text-black font-extrabold">1947</div>
+          <h1 class="text-xl font-semibold" aria-live="polite">Civil War Begins</h1>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="openMenu" class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-sm">Menu</button>
+        </div>
+      </div>
+
+      <div class="px-4 pb-3">
+        <label for="search" class="sr-only">Search events</label>
+        <div class="flex items-center gap-2 bg-white/10 rounded-xl px-3 py-2">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="opacity-70"><path d="M21.53 20.47l-3.66-3.66a8 8 0 10-1.06 1.06l3.66 3.66a.75.75 0 101.06-1.06zM4.75 11a6.25 6.25 0 1112.5 0 6.25 6.25 0 01-12.5 0z"/></svg>
+          <input id="search" placeholder="Search events, people, places…" class="bg-transparent outline-none text-sm w-full placeholder:text-white/50" />
+        </div>
+      </div>
+
+      <div id="tagRow" class="px-4 pb-3 flex items-center gap-2 overflow-x-auto no-scrollbar" aria-label="Filter by tag"></div>
+      <div class="h-px bg-white/10"></div>
+    </header>
+
+    <main id="main" class="px-4 pb-24">
+      <!-- Timeline renders here -->
+      <div id="timeline" class="space-y-6"></div>
+
+      <div class="mt-8 mb-16 text-center text-white/60 text-xs">
+        <span id="yearEnd">End of 1947</span>
+      </div>
+    </main>
+
+    <footer class="px-4 py-6 text-xs text-white/60">
+      <div class="space-y-2">
+        <p>© <span id="yearNow"></span> Israel History Project. Sources credited on each item.</p>
+        <p><a class="underline decoration-white/40" href="#" aria-disabled="true">About</a> · <a class="underline decoration-white/40" href="#" aria-disabled="true">Sources & Methodology</a> · <a class="underline decoration-white/40" href="#" aria-disabled="true">Contact</a></p>
+      </div>
+    </footer>
+
+    <noscript>
+      <div class="p-4 bg-yellow-100 text-black">
+        This site requires JavaScript to render the interactive timeline.
+      </div>
+    </noscript>
+
+    <script src="./data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
